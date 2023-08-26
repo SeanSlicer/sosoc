@@ -34,11 +34,12 @@ model User {
     image         String?
     createdAt     DateTime  @default(now()) @map(name: "created_at")
     updatedAt     DateTime  @default(now()) @map(name: "updated_at")
-    isDemo        Boolean   @default(false)
 
     followers     User[]         @relation(name: "Followers")
     follows       User[]         @relation(name: "Followers")
     notifications Notification[]
+
+    @@map(name: "users")
 }
 
 model Notification {
