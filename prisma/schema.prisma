@@ -23,11 +23,16 @@ enum NotificationType {
     // Add more notification types as needed
 }
 
+enum PostType {
+    PHOTO
+    CAPTION
+    VIDEO
+}
+
 model User {
     id            String    @id @default(cuid())
-    firstName     String
-    lastName      String
-    email         String?   @unique
+    username      String    @unique
+    email         String    @unique
     emailVerified DateTime?
     password      String
     role          UserRole  @default(USER)
@@ -35,11 +40,29 @@ model User {
     createdAt     DateTime  @default(now()) @map(name: "created_at")
     updatedAt     DateTime  @default(now()) @map(name: "updated_at")
 
+    //application specific
     followers     User[]         @relation(name: "Followers")
     follows       User[]         @relation(name: "Followers")
     notifications Notification[]
+    posts         Post[]
 
     @@map(name: "users")
+}
+
+model Post {
+    id        String   @id @default(cuid())
+    content   String
+    type      PostType
+    imageUrl  String?
+    videoUrl  String?
+    createdAt DateTime @default(now()) @map(name: "created_at")
+    updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+    author   User   @relation(fields: [authorId], references: [id])
+    authorId String
+
+    @@index([authorId])
+    @@map(name: "posts")
 }
 
 model Notification {
@@ -52,4 +75,6 @@ model Notification {
     user   User             @relation(fields: [userId], references: [id])
     type   NotificationType
     isRead Boolean          @default(false)
+
+    @@index([userId])
 }
