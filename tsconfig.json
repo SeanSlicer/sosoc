@@ -17,9 +17,11 @@
     "incremental": true,
     "noUncheckedIndexedAccess": true,
     "baseUrl": ".",
+    "rootDir": "./",
     "paths": {
       "@/*": ["./*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "contentlayer/generated": ["./.contentlayer/generated"],
+      "rootDir": ["~/"]
     },
     "plugins": [
       {
@@ -39,7 +41,7 @@
     ".contentlayer/generated",
     "pages/pricing.tsz",
     "env.js"
-  ],
+, "env.js"  ],
   "exclude": ["node_modules"],
   "ts-node": {
     "require": ["tsconfig-paths/register"]
