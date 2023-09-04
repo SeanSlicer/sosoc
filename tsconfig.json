@@ -5,7 +5,7 @@
     "allowJs": true,
     "checkJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -17,18 +17,9 @@
     "incremental": true,
     "noUncheckedIndexedAccess": true,
     "baseUrl": ".",
-    "rootDir": "./",
     "paths": {
-      "@/*": ["./*"],
-      "contentlayer/generated": ["./.contentlayer/generated"],
-      "rootDir": ["~/"]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "strictNullChecks": true
+      "~/*": ["./src/*"]
+    }
   },
   "include": [
     ".eslintrc.cjs",
@@ -36,14 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.cjs",
-    "**/*.mjs",
-    ".next/types/**/*.ts",
-    ".contentlayer/generated",
-    "pages/pricing.tsz",
-    "env.js"
-, "env.js"  ],
-  "exclude": ["node_modules"],
-  "ts-node": {
-    "require": ["tsconfig-paths/register"]
-  }
+    "**/*.mjs"
+  ],
+  "exclude": ["node_modules"]
 }
