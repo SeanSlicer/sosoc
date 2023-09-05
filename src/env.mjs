@@ -7,6 +7,11 @@ export const env = createEnv({
     NODE_ENV: z.enum(["development", "test", "production"]),
     // Data
     DATABASE_URL: z.string().min(1),
+    //Auth
+    ACCESS_TOKEN_PRIVATE_KEY: z.string().min(1),
+    ACCESS_TOKEN_PUBLIC_KEY: z.string().min(1),
+    REFRESH_TOKEN_PRIVATE_KEY: z.string().min(1),
+    REFRESH_TOKEN_PUBLIC_KEY: z.string().min(1),
     // AWS
     AWS_REGION: z.string().min(1),
     BUCKET_NAME: z.string().min(1),
@@ -21,6 +26,11 @@ export const env = createEnv({
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
     // Data
     DATABASE_URL: process.env.DATABASE_URL,
+    //Auth
+    ACCESS_TOKEN_PRIVATE_KEY: process.env.ACCESS_TOKEN_PRIVATE_KEY,
+    ACCESS_TOKEN_PUBLIC_KEY: process.env.ACCESS_TOKEN_PUBLIC_KEY,
+    REFRESH_TOKEN_PRIVATE_KEY: process.env.REFRESH_TOKEN_PRIVATE_KEY,
+    REFRESH_TOKEN_PUBLIC_KEY: process.env.REFRESH_TOKEN_PUBLIC_KEY,
     // AWS
     AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
     AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
