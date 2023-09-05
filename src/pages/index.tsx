@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 
-import { api } from "@/src/utils/api";
+import { api } from "@/lib/client/trpc";
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
