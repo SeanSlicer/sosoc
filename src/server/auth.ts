@@ -6,9 +6,9 @@ import {
   type DefaultSession,
 } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { env } from "../env";
+import { env } from "../env.mjs";
 import { prisma } from "../../lib/client/db";
-import { UserRole } from "@prisma/client";
+//import { UserRole } from "@prisma/client";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -56,6 +56,7 @@ export const authOptions: NextAuthOptions = {
       clientSecret: env.GOOGLE_CLIENT_SECRET
     })
   ],
+  secret:env.NEXTAUTH_SECRET
 };
 
 /**

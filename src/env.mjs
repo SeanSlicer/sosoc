@@ -1,5 +1,5 @@
-import { createEnv } from "@t3-oss/env-nextjs";
-import { z } from "zod";
+import { z } from "zod"
+import { createEnv } from "@t3-oss/env-nextjs"
 
 export const env = createEnv({
   server: {
@@ -10,6 +10,7 @@ export const env = createEnv({
     //Auth
     GOOGLE_CLIENT_ID: z.string().min(1),
     GOOGLE_CLIENT_SECRET: z.string().min(1),
+    NEXTAUTH_SECRET: z.string().min(1),
     // AWS
     AWS_REGION: z.string().min(1),
     BUCKET_NAME: z.string().min(1),
@@ -27,10 +28,11 @@ export const env = createEnv({
     //Auth
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     // AWS
     AWS_ACCESS_KEY: process.env.AWS_ACCESS_KEY,
     AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
     AWS_REGION: process.env.AWS_REGION,
     BUCKET_NAME: process.env.BUCKET_NAME,
   },
-});
+})
