@@ -1,5 +1,4 @@
 import { type AppType } from "next/app";
-
 import { api } from "@/lib/client/trpc";
 
 import "@/src/styles/globals.css";

@@ -24,6 +24,6 @@ const config = {
   ],
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   plugins: ["@ianvs/prettier-plugin-sort-imports"],
-};
+}
 
-module.exports = config;
+module.exports = config

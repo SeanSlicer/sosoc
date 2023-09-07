@@ -8,7 +8,7 @@ export const env = createEnv({
     // Data
     DATABASE_URL: z.string().min(1),
     //Auth
-    ACCESS_TOKEN_PRIVATE_KEY: z.string().min(1),
+    JWT_SECRET_KEY: z.string().min(1),
     ACCESS_TOKEN_PUBLIC_KEY: z.string().min(1),
     REFRESH_TOKEN_PRIVATE_KEY: z.string().min(1),
     REFRESH_TOKEN_PUBLIC_KEY: z.string().min(1),
@@ -27,7 +27,7 @@ export const env = createEnv({
     // Data
     DATABASE_URL: process.env.DATABASE_URL,
     //Auth
-    ACCESS_TOKEN_PRIVATE_KEY: process.env.ACCESS_TOKEN_PRIVATE_KEY,
+    JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
     ACCESS_TOKEN_PUBLIC_KEY: process.env.ACCESS_TOKEN_PUBLIC_KEY,
     REFRESH_TOKEN_PRIVATE_KEY: process.env.REFRESH_TOKEN_PRIVATE_KEY,
     REFRESH_TOKEN_PUBLIC_KEY: process.env.REFRESH_TOKEN_PUBLIC_KEY,
