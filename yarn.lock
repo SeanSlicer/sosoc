@@ -354,9 +354,9 @@
   integrity sha512-+uFQeyzVBoWDYt0Oyj+hLUJeBJjMyj/yxfm9s23EU+Y50YZVRSnB9dmAfI6jAAcehJubNLu2NH+jyEJrOen+aA==
 
 "@trpc/next@^10.38.0":
-  version "10.38.0"
-  resolved "https://registry.yarnpkg.com/@trpc/next/-/next-10.38.0.tgz#de1ae91f70d6442abd6ff9caa126258f59e2ddf1"
-  integrity sha512-cCoYMAOj6qY0jUwc5W/+IvgpMhLKBhyG7lx85ohvRyETdqZvwRQHjH/DWaOn1+WEFKT1c/gsIzHsD0lBQhyFow==
+  version "10.38.1"
+  resolved "https://registry.yarnpkg.com/@trpc/next/-/next-10.38.1.tgz#f7264cbc11fd38933edf6c970846cb984be6fd08"
+  integrity sha512-N5x5IBf0epm6q54GFq6fMk4E26IdLQtAI3J6UmtcVd91gZm4PKuWg5vcvVMGKGgMqwNe2rm5kpirtk7VDMUi0w==
   dependencies:
     react-ssr-prepass "^1.5.0"
 

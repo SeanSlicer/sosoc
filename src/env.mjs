@@ -9,9 +9,8 @@ export const env = createEnv({
     DATABASE_URL: z.string().min(1),
     //Auth
     JWT_SECRET_KEY: z.string().min(1),
-    ACCESS_TOKEN_PUBLIC_KEY: z.string().min(1),
-    REFRESH_TOKEN_PRIVATE_KEY: z.string().min(1),
-    REFRESH_TOKEN_PUBLIC_KEY: z.string().min(1),
+    ADMIN_EMAIL: z.string().min(1),
+    ADMIN_PASSWORD: z.string().min(1),
     // AWS
     AWS_REGION: z.string().min(1),
     BUCKET_NAME: z.string().min(1),
@@ -28,9 +27,8 @@ export const env = createEnv({
     DATABASE_URL: process.env.DATABASE_URL,
     //Auth
     JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
-    ACCESS_TOKEN_PUBLIC_KEY: process.env.ACCESS_TOKEN_PUBLIC_KEY,
-    REFRESH_TOKEN_PRIVATE_KEY: process.env.REFRESH_TOKEN_PRIVATE_KEY,
-    REFRESH_TOKEN_PUBLIC_KEY: process.env.REFRESH_TOKEN_PUBLIC_KEY,
+    ADMIN_EMAIL: process.env.ADMIN_EMAIL,
+    ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
     // AWS
     AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
     AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,

@@ -1,9 +1,9 @@
 import type { FC } from 'react'
-import Login from '../components/auth/login'
+import SignUp from '../components/auth/signUp'
 
 const login: FC = () => {
   return (
-    <Login />
+    <SignUp />
   )
 }
 
