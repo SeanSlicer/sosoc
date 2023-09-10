@@ -31,7 +31,7 @@ export const userRouter = router({
           cookie.serialize('user-token', token, {
             httpOnly: true,
             path: '/',
-            secure: process.env.NODE_ENV === 'production',
+            //secure: env.NODE_ENV === 'development',
           })
         );
 
@@ -65,7 +65,7 @@ export const userRouter = router({
           cookie.serialize('user-token', token, {
             httpOnly: true,
             path: '/',
-            secure: process.env.NODE_ENV === 'production',
+            //secure: env.NODE_ENV === 'development',
           })
         );
 
@@ -77,4 +77,20 @@ export const userRouter = router({
         message: 'User not created',
       });
     }),
-});
+    signOut: publicProcedure
+    .mutation(async ({ ctx }) => {
+      const { res } = ctx;
+console.log('wow')
+      // Clear the user token cookie
+      res.setHeader(
+        'Set-Cookie',
+        cookie.serialize('user-token', '', {
+          httpOnly: true,
+          path: '/',
+          expires: new Date(0),
+        })
+      );
+
+      return { success: true };
+    }),
+  });

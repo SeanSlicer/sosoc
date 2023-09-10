@@ -1,4 +1,4 @@
-import React, { useState, type ChangeEvent, type FormEvent } from 'react';
+import React, { useState, type ChangeEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from "next/router"
 import { trpc } from '@/lib/client/trpc';
@@ -32,6 +32,11 @@ const SignUp: React.FC = () => {
       <div className="max-w-md w-full space-y-8">
         <h1 className="text-center text-3xl font-extrabold text-gray-900">Sign Up</h1>
         <form className="mt-8 space-y-6" >
+        <div className="text-center text-red-500 text-sm">
+            {error && (
+              <p>{error.message}</p>
+            )}
+          </div>
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <input

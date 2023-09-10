@@ -4,23 +4,30 @@ import { verifyAuth } from "../lib/client/auth";
 export async function middleware(req: NextRequest) {
     const token = req.cookies.get('user-token')?.value
 
+    // validate the user is authenticated
     const verifiedToken =
-    token && 
-    (await verifyAuth(token).catch((err) => {console.log(err)}))
-
-    if(req.nextUrl.pathname.startsWith('/login' || '/signUp') && !verifiedToken) {
-        return
+      token &&
+      (await verifyAuth(token).catch((err) => {
+        console.error(err)
+      }))
+  
+    if (req.nextUrl.pathname.startsWith('/login') && !verifiedToken) {
+      return
     }
-
-    if(!req.url.includes('/login') && verifiedToken) {
-    return NextResponse.redirect(new URL('/dashboard', req.url))
+  
+    const url = req.url
+  
+    if (url.includes('/login') && verifiedToken) {
+      return NextResponse.redirect(new URL('/dashboard', req.url))
     }
-
-    if(!verifiedToken) {
-        return NextResponse.redirect(new URL('/login', req.url))
+  
+    if (!verifiedToken) {
+      return NextResponse.redirect(new URL('/login', req.url))
     }
-}
+    return
+  }
+  
 
 export const config = {
-    matcher: ['/dashboard']
+    matcher: ['/dashboard/:path*', '/api/admin/:path*', '/login']
 }
