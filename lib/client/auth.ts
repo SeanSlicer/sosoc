@@ -21,12 +21,12 @@ export const verifyAuth = async (token: string) => {
 /**
  * Adds the user token cookie to a response.
  */
-export async function setUserCookie(res: NextResponse) {
+export async function setUserCookie(res: NextResponse, setExpirationHours : string) {
   const token = await new SignJWT({})
     .setProtectedHeader({ alg: 'HS256' })
     .setJti(nanoid())
     .setIssuedAt()
-    .setExpirationTime('2h')
+    .setExpirationTime(setExpirationHours + 'h')
     .sign(new TextEncoder().encode(env.JWT_SECRET_KEY))
 
   res.cookies.set('user-token', token, {

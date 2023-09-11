@@ -78,19 +78,18 @@ export const userRouter = router({
       });
     }),
     signOut: publicProcedure
-    .mutation(async ({ ctx }) => {
+    .mutation(({ctx }) => {
       const { res } = ctx;
-console.log('wow')
-      // Clear the user token cookie
       res.setHeader(
         'Set-Cookie',
         cookie.serialize('user-token', '', {
           httpOnly: true,
           path: '/',
-          expires: new Date(0),
+          //secure: env.NODE_ENV === 'development',
         })
       );
 
       return { success: true };
+      
     }),
   });

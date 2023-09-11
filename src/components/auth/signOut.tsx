@@ -11,12 +11,19 @@ const SignOutButton: React.FC = () => {
   })
 
   return (
+    <>
+    <div className="text-center text-red-500 text-sm">
+            {error && (
+              <p>{error.message}</p>
+            )}
+          </div>
     <button
-      onClick={() => signOut}
+      onClick={() => signOut()}
       className="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-600"
     >
       Sign Out
     </button>
+    </>
   );
 };
 
