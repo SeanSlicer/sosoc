@@ -1,6 +1,7 @@
 import React, { type FC, useState, type ChangeEvent } from 'react';
 import { useRouter} from 'next/router';
 import { trpc } from '@/lib/client/trpc';
+import Link from 'next/link';
 
 const Login : FC = () => {
 
@@ -99,6 +100,11 @@ const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
             </button>
           </div>
         </form>
+        <div className="text-center">
+          <Link className="text-indigo-600 hover:text-indigo-500" href="/signUp">
+            Sign Up
+          </Link>
+        </div>
       </div>
     </div>
   );
