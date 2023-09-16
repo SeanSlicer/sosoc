@@ -11,7 +11,7 @@ const t = initTRPC.context<Context>().create({
   },
 })
 
-const isAdmin = t.middleware(async ({ ctx, next }) => {
+const isAuthenticated = t.middleware(async ({ ctx, next }) => {
   const { req } = ctx
   const token = req.cookies['user-token']
 
@@ -30,4 +30,4 @@ const isAdmin = t.middleware(async ({ ctx, next }) => {
 export const router = t.router
 
 export const publicProcedure = t.procedure
-export const adminProcedure = t.procedure.use(isAdmin)
+export const userProcedure = t.procedure.use(isAuthenticated)

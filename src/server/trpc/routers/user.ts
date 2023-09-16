@@ -3,7 +3,7 @@ import cookie from 'cookie';
 import { SignJWT } from 'jose';
 import { z } from 'zod';
 import { env } from '@/src/env.mjs';
-import { publicProcedure, router } from '../trpc';
+import { userProcedure, publicProcedure, router } from '../trpc';
 import { getUserByUsernameOrEmailAndPassword } from '@/prisma/queries/auth/getUser';
 import { createUser } from '@/prisma/queries/auth/signUp';
 import { signUpSchema } from '@/src/validation/auth/auth';
@@ -77,7 +77,7 @@ export const userRouter = router({
         message: 'User not created',
       });
     }),
-    signOut: publicProcedure
+    signOut: userProcedure
     .mutation(({ctx }) => {
       const { res } = ctx;
       res.setHeader(
