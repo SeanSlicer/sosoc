@@ -1,6 +1,6 @@
 import { initTRPC, TRPCError } from '@trpc/server'
 import superjson from 'superjson'
-import { verifyAuth } from '../../../lib/client/auth'
+import { verifyAuth } from '../../lib/client/auth'
 
 import { type Context } from './context'
 
@@ -26,6 +26,8 @@ const isAuthenticated = t.middleware(async ({ ctx, next }) => {
 
   return next()
 })
+
+export const createTRPCRouter = t.router
 
 export const router = t.router
 
