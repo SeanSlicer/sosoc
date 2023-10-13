@@ -20,7 +20,6 @@ enum NotificationType {
     NEW_FOLLOWER
     NEW_MESSAGE
     FRIEND_REQUEST
-    // Add more notification types as needed
 }
 
 enum PostType {
@@ -45,6 +44,7 @@ model User {
     follows       User[]         @relation(name: "Followers")
     notifications Notification[]
     posts         Post[]
+    likes         Like[]
 
     @@map(name: "users")
 }
@@ -60,6 +60,7 @@ model Post {
 
     author   User   @relation(fields: [authorId], references: [id])
     authorId String
+    likes    Like[]
 
     @@index([authorId])
     @@map(name: "posts")
@@ -77,4 +78,19 @@ model Notification {
     isRead Boolean          @default(false)
 
     @@index([userId])
+}
+
+model Like {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now()) @map(name: "created_at")
+
+    user   User   @relation(fields: [userId], references: [id], map: "UserLikes")
+    userId String
+
+    post   Post   @relation(fields: [postId], references: [id], map: "PostLikes")
+    postId String
+
+    @@index([userId])
+    @@index([postId])
+    @@map(name: "likes")
 }
