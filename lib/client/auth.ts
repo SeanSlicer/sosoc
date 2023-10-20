@@ -2,13 +2,17 @@ import { jwtVerify, SignJWT } from 'jose'
 import { nanoid } from 'nanoid'
 import type { NextResponse } from 'next/server'
 import { env } from '../../src/env.mjs'
+import { getUserById } from '@/prisma/queries/auth/getUser'
+import { User } from '@prisma/client'
 
 interface UserJwtPayload {
   jti: string
   iat: number
 }
 
-
+/**
+ * Checks for token andd returns uid.
+ */
 export const verifyAuth = async (token: string) => {
   try {
     const verified = await jwtVerify(token, new TextEncoder().encode(env.JWT_SECRET_KEY))
@@ -17,6 +21,17 @@ export const verifyAuth = async (token: string) => {
     throw new Error('Your token has expired.')
   }
 }
+
+
+export const getUserByToken = async (token: string) => {
+  try {
+    const user = getUserById((await verifyAuth(token)).jti)
+    return user
+  } catch (err) {
+    throw new Error('Your token has expired.')
+  }
+}
+
 
 /**
  * Adds the user token cookie to a response.

@@ -3,6 +3,18 @@
 import { prisma } from '@/lib/client/db';
 import bcrypt from 'bcrypt';
 
+export async function getUserById(id:string) {
+  const user = await prisma.user.findFirst({
+    where: {
+      id : id,
+    },
+  });
+  if(!user) return null
+
+  return user;
+
+}
+
 export async function getUserByUsernameOrEmailAndPassword(
   usernameOrEmail: string,
   password: string
