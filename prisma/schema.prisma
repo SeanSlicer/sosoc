@@ -45,6 +45,7 @@ model User {
     notifications Notification[]
     posts         Post[]
     likes         Like[]
+    comments      Comment[]
 
     @@map(name: "users")
 }
@@ -58,9 +59,10 @@ model Post {
     createdAt DateTime @default(now()) @map(name: "created_at")
     updatedAt DateTime @default(now()) @map(name: "updated_at")
 
-    author   User   @relation(fields: [authorId], references: [id])
+    author   User      @relation(fields: [authorId], references: [id])
     authorId String
     likes    Like[]
+    comments Comment[]
 
     @@index([authorId])
     @@map(name: "posts")
@@ -93,4 +95,21 @@ model Like {
     @@index([userId])
     @@index([postId])
     @@map(name: "likes")
+}
+
+model Comment {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now()) @map(name: "created_at")
+
+    content String
+
+    user   User   @relation(fields: [userId], references: [id], map: "UserComments")
+    userId String
+
+    post   Post   @relation(fields: [postId], references: [id], map: "PostComments")
+    postId String
+
+    @@index([userId])
+    @@index([postId])
+    @@map(name: "comments")
 }
