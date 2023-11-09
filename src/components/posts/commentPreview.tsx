@@ -1,6 +1,11 @@
-import React, { FC } from "react"
+import React, { type FC } from "react"
+import { type Comment } from "@prisma/client";
 
-const CommentPreview : FC = (props) => {
+type CommentPreviewProps = {
+    comment : Comment
+}
+
+const CommentPreview : FC<CommentPreviewProps> = ({ comment }) => {
     return(<><div>wow</div></>);
 }
 
