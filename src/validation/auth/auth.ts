@@ -21,3 +21,19 @@ export const loginSchemaUsername = signUpSchema.omit({email: true});
 export type LoginEmail = z.infer<typeof loginSchemaEmail>;
 export type LoginUsername = z.infer<typeof loginSchemaUsername>;
 export type SignUp = z.infer<typeof signUpSchema>;
+export type AuthResult = {
+  accessToken: string;
+  refreshToken: string;
+  user: UserData;
+};
+
+export type UserData = {
+  id: string;
+  email?: string;
+  username: string;
+};
+
+export type TokenPayload = {
+  userId: string;
+  username: string;
+};
